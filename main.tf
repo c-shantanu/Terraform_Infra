@@ -7,7 +7,7 @@ resource "aws_instance" "Master-Instance" {
   ami           = "ami-03caf91bb3d81b843" 
   instance_type = "t2.micro"
 
-  key_name = aws_key_pair.example_key.key_name
+  key_name = aws_key_pair.example_KP.key_name
 
   tags = {
       Name = "Master-Instance"
