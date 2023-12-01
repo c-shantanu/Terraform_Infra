@@ -8,6 +8,7 @@ resource "aws_instance" "Master-Instance" {
   instance_type = "t2.micro"
 
   key_name = aws_key_pair.example_key.key_name
+  file_permission = "0400"
 
   tags = {
       Name = "Master-Instance"
@@ -24,11 +25,7 @@ resource "tls_private_key" "example_key" {
   rsa_bits  = 4096
 }
 
-resource "tls_private_key" "example_key" {
-  content         = tls_private_key.rsa.example_key
-  file_permission = "0400"
-  filename        =  example_key.pem
-}
+
 
 
 
