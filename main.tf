@@ -8,10 +8,10 @@ resource "aws_instance" "Master-Instance" {
   instance_type = "t2.micro"
 
   key_name = aws_key_pair.example_key.key_name
-  file_permission = "0400"
 
   tags = {
       Name = "Master-Instance"
+     
   }
 }
 
