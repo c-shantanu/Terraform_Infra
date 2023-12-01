@@ -25,13 +25,6 @@ resource "tls_private_key" "example_key" {
   rsa_bits  = 4096
 }
 
-resource "null_resource" "change_key_permissions" {
-  depends_on = [aws_instance.Master-Instance]
-
-  provisioner "local-exec" {
-    command = "chmod 400 ${path.module}/example-key.pem"
-  }
-}
 
 
 
