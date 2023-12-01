@@ -18,9 +18,17 @@ resource "aws_key_pair" "example_key" {
   key_name   = "example-key"
   public_key = tls_private_key.example_key.public_key_openssh
 }
+
 resource "tls_private_key" "example_key" {
   algorithm = "RSA"
   rsa_bits  = 4096
 }
+
+resource "tls_private_key" "example_key" {
+  content         = tls_private_key.rsa.example_key
+  file_permission = "0400"
+  filename        =  example_key.pem
+}
+
 
 
