@@ -77,7 +77,6 @@ resource "aws_instance" "web1" {
 
   tags = {
     Name = "prometheus+grafana"
-    Type = "Master"
   }
 }
 
@@ -90,7 +89,6 @@ resource "aws_instance" "web2" {
 
   tags = {
     Name = "node_exporter"
-    Type = "Slave"
   }
 }
 
