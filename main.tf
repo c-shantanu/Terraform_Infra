@@ -73,7 +73,7 @@ resource "aws_instance" "web1" {
   ami             = "ami-03caf91bb3d81b843"
   instance_type   = "t2.micro"
   security_groups = [aws_security_group.TF_SG.name]
-  key_name = aws_key_pair.example_key.key_name
+  #key_name = aws_key_pair.example_key.key_name
 
   tags = {
     Name = "prometheus+grafana"
@@ -86,7 +86,7 @@ resource "aws_instance" "web2" {
   ami             = "ami-03caf91bb3d81b843"
   instance_type   = "t2.micro"
   security_groups = [aws_security_group.TF_SG.name]
-  key_name = aws_key_pair.example_key.key_name
+  #key_name = aws_key_pair.example_key.key_name
 
   tags = {
     Name = "node_exporter"
@@ -94,14 +94,7 @@ resource "aws_instance" "web2" {
   }
 }
 
-resource "aws_key_pair" "example_key" {
-  key_name   = "example-key"
-  public_key = tls_private_key.example_key.public_key_openssh
-}
-resource "tls_private_key" "example_key" {
-  algorithm = "RSA"
-  rsa_bits  = 4096
-}
+
 
 
 
