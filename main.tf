@@ -74,6 +74,7 @@ resource "aws_instance" "web1" {
   instance_type   = "t2.micro"
   security_groups = [aws_security_group.TF_SG.name]
   #key_name = aws_key_pair.example_key.key_name
+  key_name = Jenkins_Server.pem
 
   tags = {
     Name = "prometheus+grafana"
@@ -87,6 +88,8 @@ resource "aws_instance" "web2" {
   instance_type   = "t2.micro"
   security_groups = [aws_security_group.TF_SG.name]
   #key_name = aws_key_pair.example_key.key_name
+  key_name = Jenkins_Server.pem
+
 
   tags = {
     Name = "node_exporter"
