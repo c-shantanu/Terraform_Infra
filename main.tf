@@ -7,7 +7,7 @@ provider "aws" {
 resource "aws_security_group" "TF_SG" {
   name        = "metrics SG"
   description = "metrics security group using Terraform"
-  vpc_id      = "vpc-08513ae8b191fbe25"
+  vpc_id      = "vpc-0b51df83f06bfdf20"
 
   ingress {
     description      = "prometheus"
