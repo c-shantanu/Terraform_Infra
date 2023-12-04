@@ -73,27 +73,34 @@ resource "aws_instance" "web1" {
   ami             = "ami-03caf91bb3d81b843"
   instance_type   = "t2.micro"
   security_groups = [aws_security_group.TF_SG.name]
-  key_name = "https://github.com/c-shantanu/Terraform_Infra/blob/main/Jenkins_Server.pem"
+  key_name = aws_key_pair.example_key.key_name
 
   tags = {
     Name = "prometheus+grafana"
     Type = "Master"
   }
-
 }
+
 
 resource "aws_instance" "web2" {
   ami             = "ami-03caf91bb3d81b843"
   instance_type   = "t2.micro"
   security_groups = [aws_security_group.TF_SG.name]
-  key_name = "https://github.com/c-shantanu/Terraform_Infra/blob/main/Jenkins_Server.pem"
+  key_name = aws_key_pair.example_key.key_name
 
   tags = {
     Name = "node_exporter"
     Type = "Slave"
   }
- 
+}
 
+resource "aws_key_pair" "example_key" {
+  key_name   = "example-key"
+  public_key = tls_private_key.example_key.public_key_openssh
+}
+resource "tls_private_key" "example_key" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
 }
 
 
