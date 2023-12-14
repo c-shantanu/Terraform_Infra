@@ -60,6 +60,5 @@ pipeline {
                 sh ''' cd /var/lib/jenkins/workspace/ansible_role/
                 ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook playbook.yml    '''
             }
-
     }
 }
