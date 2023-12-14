@@ -47,20 +47,5 @@ pipeline {
                 }
             }
         }
-        stage('Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/c-shantanu/ansible_role.git'
-            }
-        stage('Prometehus Deploy')
-            when {
-                expression { params.ACTION == 'apply'}
-            }
-            steps {
-                // Deploy Prometheus
-                sh ''' cd /var/lib/jenkins/workspace/ansible_role/
-                ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook playbook.yml    '''
-         
-            }
-        }
     }
 }
